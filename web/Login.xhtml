@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:f="http://java.sun.com/jsf/core"
+       xmlns:p="http://primefaces.org/ui">
+    <f:view contentType="text/html">
+        <h:head>
+            <title>Facelet Title</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        </h:head>
+        <h:body>
+            <center>
+                <h1>Login Principal</h1>
+                <p:panel>
+                    <h:form>
+                        <p:selectOneMenu id="seleccion" value="#{LoginUsuario.tipousuario}" required="true" requiredMessage="Seleccione Tipo Usuario">
+                            <f:selectItem itemLabel="---Seleccionar---"></f:selectItem>
+                            <f:selectItem itemValue="1" itemLabel="Administrador"/>
+                            <f:selectItem itemValue="2" itemLabel="Cliente"/>
+                        </p:selectOneMenu>
+                        <p:message for="seleccion"/>
+                        <p:inputText value="#{LoginUsuario.usuario}" id="usuario" required="true" requiredMessage="Ingrese usuario" type="text" placeholder="usuario"/>
+                        <p:message for="usuario"/>
+                        <p:inputText value="#{LoginUsuario.clave}" id="clave" required="true" requiredMessage="Ingrese Contraseña" type="password" placeholder="clave"/>
+                        <p:message for="clave"/>
+                        <p style="text-align: center">
+                            <p:commandButton value="Aceptar" action="#{LoginUsuario.LoginAcceso(LoginUsuario)}" type="submit" style="margin-right:10px" ajax="false" />
+                        </p>
+                        <h:outputText value="#{LoginUsuario.mensaje}"/>
+                    </h:form>
+                </p:panel>
+            </center>
+        </h:body>
+    </f:view>
+</html>
+

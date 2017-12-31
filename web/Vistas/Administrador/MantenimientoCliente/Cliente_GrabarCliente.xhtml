@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition 
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    template="./../MenuPrincipalAdministrador.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <style type="text/css">
+            .ui-panel{
+                font-size: 0.90em;
+            }
+            .ui-panel .ui-panel-content{
+                padding-right: 0.4em;
+            }
+            .ui-panel.footer{
+                color: #0.90;
+                font-weight: bold;
+            }
+        </style>
+    </h:head>
+    <ui:define name="content">
+        <p:panel header="Grabar Cliente" style="margin: auto; width: 380px">
+            <center><h:outputText value="#{cliente.mensaje}"/></center>
+            <h:form>
+                <h:panelGrid columns="3" style="margin: auto">
+                    <h:outputText value="Codigo:" />
+                    <p:inputText value="#{cliente.id}" id="codigo" required="true" requiredMessage="Ingrese Codigo">                       
+                    </p:inputText>
+                    <h:message for="codigo" />
+                    <h:outputText value="Nombre:" />
+                    <p:inputText value="#{cliente.nombre}" id="nombre" required="true" requiredMessage="Ingrese Nombre">                       
+                    </p:inputText>
+                    <h:message for="nombre" />
+                    <h:outputText value="Apellido:" />
+                    <p:inputText value="#{cliente.apellido}" id="apellido" required="true" requiredMessage="Ingrese Apellido">                        
+                    </p:inputText>
+                    <h:message for="apellido" />
+                    <h:outputText value="Sexo:"/>
+                    <p:selectOneMenu value="#{cliente.sexo}" id="sexo" required="true" requiredMessage="Ingrese Sexo">
+                            <f:selectItem itemLabel="SELECCIONE"/>
+                            <f:selectItem itemLabel="Masculino" itemValue="Masculino"/>
+                            <f:selectItem itemLabel="Femenino" itemValue="Femenino"/>
+                    </p:selectOneMenu>
+                    <h:message for="sexo"/>
+                    <h:outputText value="Edad:" />
+                    <p:inputText value="#{cliente.edad}" id="edad" required="true" requiredMessage="Ingrese Edad">                        
+                    </p:inputText>
+                    <h:message for="edad" />
+                    <h:outputText value="Correo:" />
+                    <p:inputText value="#{cliente.correo}" id="correo" required="true" requiredMessage="Ingrese Correo">                        
+                    </p:inputText>
+                    <h:message for="correo" />
+                    <h:outputText value="Usuario:" />
+                    <p:inputText value="#{cliente.usuario}" id="usuario" required="true" requiredMessage="Ingrese Usuario">                        
+                    </p:inputText>
+                    <h:message for="usuario" />
+                    <h:outputText value="Clave:" />
+                    <p:inputText value="#{cliente.clave}" id="clave" required="true" requiredMessage="Ingrese Clave">                        
+                    </p:inputText>
+                    <h:message for="clave" />
+                </h:panelGrid>
+                <p style="text-align: center">
+                    <p:commandButton value="GRABAR" action="GRABARCLIENTE" actionListener="#{cliente.GrabarAlumno}" type="submit" ajax="false"/>
+                </p>
+            </h:form>
+            <h:form>
+            <p style="text-align: center">
+                <p:commandButton value="RETROCEDER" action="LISTADOCLIENTE" />
+            </p>
+            </h:form>
+        </p:panel>
+    </ui:define>
+</ui:composition>

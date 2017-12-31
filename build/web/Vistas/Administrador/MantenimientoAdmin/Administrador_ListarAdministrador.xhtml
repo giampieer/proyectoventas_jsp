@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition 
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    template="./../MenuPrincipalAdministrador.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:p="http://primefaces.org/ui"  
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <ui:define name="content">
+        <center>
+            <p:panel header="Mantenimiento Administrador" footer="VrammDev" style="margin: auto; width: 1400px">
+                <h:form>
+                    <h:outputText value="#{administrador.mensaje}"/>
+                    <p style="text-align: center">
+                        <p:commandButton value="AGREGAR ADMINISTRADOR" action="Agregarrr" />
+                    </p>
+                    <p:dataTable value="#{administrador.listar}" var="u">
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="ID"></h:outputText>
+                            </f:facet>
+                            <h:outputText value="#{u.idAdministrador}"></h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="NOMBRE"></h:outputText>
+                            </f:facet>
+                            <h:outputText value="#{u.nombre}"></h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="APELLIDO"></h:outputText>
+                            </f:facet>
+                            <h:outputText value="#{u.apellido}"></h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="SEXO"></h:outputText>
+                            </f:facet>
+                            <h:outputText value="#{u.sexo}"></h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="EDAD"></h:outputText>
+                            </f:facet>
+                            <h:outputText value="#{u.edad}"></h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="CORREO"></h:outputText>
+                            </f:facet>
+                            <h:outputText value="#{u.correo}"></h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="USUARIO"></h:outputText>
+                            </f:facet>
+                            <h:outputText value="#{u.usuario}"></h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="CLAVE"></h:outputText>
+                            </f:facet>
+                            <h:outputText value="#{u.clave}"></h:outputText>
+                        </p:column>
+                        <p:column>
+                            <p style="text-align: center">
+                                <h:commandButton value="Modificar" action="ModificarAdmin" actionListener="#{administrador.CargarDato}">
+                                    <f:attribute name="iduser" value="#{u.idAdministrador}"/>
+                                </h:commandButton>
+                            </p>
+                        </p:column>
+                        <p:column>
+                            <p style="text-align: center">
+                                <h:commandButton value="Eliminar" action="MANADMIN" actionListener="#{administrador.EliminarAdmin}">
+                                    <f:attribute name="iduser" value="#{u.idAdministrador}"/>
+                                </h:commandButton>
+                            </p>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </p:panel>
+        </center>
+    </ui:define>
+</ui:composition>
+

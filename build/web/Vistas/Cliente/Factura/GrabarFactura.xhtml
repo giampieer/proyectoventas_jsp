@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition  
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    template="./../MenuCliente.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <ui:define name="content">
+        <p:panel header="Grabar Factura" style="margin: auto; width: 380px">
+            <h:form>
+                <h:panelGrid columns="3" style="margin: auto">
+                    <h:outputText value="Numero:" />
+                    <p:inputText value="#{factura.id}"  id="codigo" required="true" requiredMessage="Ingrese Codigo"/>
+                    <h:message for="codigo" />
+                    <h:outputText value="" />
+                    <p:inputText value="#{factura.idadmin}" type="hidden" id="nombre"/>
+                    <h:message for="nombre" />
+                    <h:outputText value="" />
+                    <p:inputText value="#{factura.idproducto}" id="producto" type="hidden" required="true" requiredMessage="Ingrese Nombre"/>
+                    <h:message for="producto" />
+                    <h:outputText value="" />
+                    <p:inputText value="#{factura.idcliente}" id="categoria" type="hidden" required="true" requiredMessage="Ingrese Categoria"/>
+                    <h:message for="categoria" />
+                    <h:outputText value="Fecha de Entrega:" />
+                    <p:inputText value="#{factura.fecha}" id="fecha" required="true" requiredMessage="Ingrese Precio"/>
+                    <h:message for="fecha" />
+                    <h:outputText value="Cantidad:" />
+                    <p:inputText value="#{factura.cantidad}" type="number"  id="cantidad" required="true" requiredMessage="Ingrese Stock"/>
+                    <h:message for="cantidad" />
+                    <h:outputText value="Precio x Unidad:" />
+                    <p:inputText value="#{factura.precio}" id="precio"  required="true" requiredMessage="Ingrese Stock">
+                    </p:inputText>
+                    <h:message for="precio" />
+                </h:panelGrid>
+                <p style="text-align: center">
+                    <p:commandButton value="GRABAR" action="PRINCIPALCLIENTE" actionListener="#{factura.GrabarFactura}" type="submit" ajax="false">
+                        <f:param name="iduser" value="#{factura.idcliente}"/>
+                    </p:commandButton>
+                </p>
+            </h:form>
+            <h:form>
+                <p style="text-align: center">
+                    <p:commandButton value="RETROCEDER" action="PRINCIPALCLIENTE" actionListener="#{factura.Codigo}">
+                        <f:param name="iduser" value="#{factura.idcliente}"/>
+                    </p:commandButton>
+
+                </p>
+            </h:form>
+        </p:panel>
+    </ui:define>
+</ui:composition>
+

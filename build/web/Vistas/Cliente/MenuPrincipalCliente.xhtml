@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition  
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    template="./MenuCliente.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui" xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <h:head>
+        <title>Facelet Title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+
+    <ui:define name="content">
+
+        <h:form id="form">
+
+            <p:dataGrid var="car" value="#{curso.lista}" columns="2" 
+                        rows="12" paginator="true" id="cars"
+                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                        >
+
+                <f:facet name="header">
+                    <h2>Productos en Ventas</h2>
+                    <p style="text-align: center">
+                        <h:commandButton value="Detalle de Productos Comprados" action="ListarFactura" actionListener="#{factura.listaDatos}">
+                            <f:param name="iduser" value="#{factura.cod}"/>
+                        </h:commandButton>
+                    </p>
+                </f:facet>
+
+                <p:panel header="#{car.categoria}" style="text-align:center">
+                    <h:panelGrid columns="1" style="width:100%">
+                        <h3>[Image]</h3>
+                        <h:outputText value="#{car.nombre}" />
+                        <h:outputText value="" />
+                        <h:outputText value="Precio: S/.#{car.precio}" />
+                        <h:outputText value="Stock: #{car.stock}" />
+                        <p style="text-align: center">
+                            <h:commandButton value="Comprar" action="Grabarfactura" actionListener="#{factura.Datos}">
+                                <f:attribute name="idproducto" value="#{car.idproducto}"/>
+                                <f:param name="iduser" value="#{factura.cod}"/>
+                            </h:commandButton>
+                        </p>
+                    </h:panelGrid>
+                </p:panel>
+
+            </p:dataGrid>
+
+        </h:form>
+    </ui:define>
+
+</ui:composition>

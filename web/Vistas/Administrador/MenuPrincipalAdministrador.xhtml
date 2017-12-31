@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" >
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <title>Menu Administrador</title>
+            </f:facet>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true" >
+
+                <p:layoutUnit position="north" size="110" resizable="true" closable="true" collapsible="true">
+                    <h2 style="text-align: center">Sistema de ventas</h2>
+                </p:layoutUnit>
+                <p:layoutUnit position="south" size="40" closable="true" collapsible="true">
+                    <center>@Perú</center>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="210" header="Menu" collapsible="true">
+                    <h:form>
+                        <p:panelMenu>
+                            <p:submenu label="Mantenimientos">
+                                <p:menuitem value="Productos" action="LISTADOCURSO" />
+                            </p:submenu>
+                            <p:submenu label="Usuarios">
+                                <p:menuitem value="Administrador" action="MANADMIN" />
+                                <p:menuitem value="Cliente" action="LISTADOCLIENTE" />
+                            </p:submenu>
+                        </p:panelMenu>
+                    </h:form>
+                    <h:form>
+                        <p:commandButton value="Cerrar Sesión" style="left:14px" action="LOGIN" icon="ui-icon-extlink" />
+                    </h:form>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <ui:insert name="content">
+                        
+                    </ui:insert>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+
